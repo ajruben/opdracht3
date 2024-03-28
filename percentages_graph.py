@@ -20,10 +20,11 @@ print(df)
 
 #plot the percentage of divorced people in the Netherlands over time. 
 df.set_index('Perioden', inplace=True)
-plt.plot(x=df.index, y=df["Percentage_Divorced", "Percentage_NeverMarried", "Percentage_Married", "Percentage_Widowed"], marker='o', linestyle='-')
-plt.title('Percentages Over Time')
-plt.xlabel('Year')
-plt.ylabel("% of Dutch Population")
-plt.legend("Percentage Divorced", "Percentage Unmarried", "Percentage Married", "Percentage Widowed")
-plt.grid(True)
-plt.show()
+for column in ["Percentage_Divorced", "Percentage_NeverMarried", "Percentage_Married", "Percentage_Widowed"]:
+    plt.plot(df.index, df[column], marker='o', linestyle='-', label=column)
+    plt.title(f'{column} Over Time')
+    plt.xlabel('Year')
+    plt.ylabel("% of Dutch Population")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
